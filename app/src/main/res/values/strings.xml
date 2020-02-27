@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">learn</string>
+    <string name="songname_hint">Name</string>
+    <string name="songauthor_hint">Author</string>
+    <string name="play_cover_description">Cover</string>
+    <string name="main_cover_description">Cover</string>
+    <string name="tab_local">Local</string>
+    <string name="tab_category">Category</string>
+    <string name="tab_single">Single</string>
+    <string name="tab_artist">Artist</string>
+    <string name="tab_album">Album</string>
+    <string name="tab_folder">Folder</string>
+
+</resources>

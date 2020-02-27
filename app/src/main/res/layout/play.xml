@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/play_backbutton"
+            android:layout_width="@dimen/play_backarrow_size"
+            android:layout_height="@dimen/play_backarrow_size" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/main_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/songname_hint"
+                android:singleLine="true"
+                android:textAlignment="viewStart"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/main_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/songauthor_hint"
+                android:importantForAutofill="no"
+                android:textAlignment="viewStart"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/play_cover"
+            android:layout_width="@dimen/play_cover_size"
+            android:layout_height="@dimen/play_cover_size"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/play_cover_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/play_lyric"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/play_side_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/play_cover" />
+
+        <LinearLayout
+            android:id="@+id/play_action_icons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/play_side_guideline">
+
+            <Button
+                android:id="@+id/play_timer"
+                android:layout_width="@dimen/play_action_size"
+                android:layout_height="@dimen/play_action_size" />
+
+            <Button
+                android:id="@+id/play_shuffle"
+                android:layout_width="@dimen/play_action_size"
+                android:layout_height="@dimen/play_action_size" />
+
+            <Button
+                android:id="@+id/play_list"
+                android:layout_width="@dimen/play_action_size"
+                android:layout_height="@dimen/play_action_size" />
+
+            <Button
+                android:id="@+id/play_tag"
+                android:layout_width="@dimen/play_action_size"
+                android:layout_height="@dimen/play_action_size" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/play_side_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="60dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
