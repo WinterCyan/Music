@@ -10,7 +10,7 @@ import com.google.android.material.tabs.TabLayout
 import winter.music.adapters.LocalPagerAdapter
 import winter.music.R
 
-class LocalFragment() : Fragment(){
+class LocalFragment : Fragment(){
     private lateinit var localPagerAdapter: LocalPagerAdapter
     private lateinit var localViewPager: ViewPager
     private lateinit var localTabLayout: TabLayout
@@ -22,6 +22,7 @@ class LocalFragment() : Fragment(){
     ): View? {
         val localView = inflater.inflate(R.layout.local, container, false)
         localPagerAdapter = LocalPagerAdapter(
+            context!!,
             childFragmentManager,
             arrayListOf(
                 getText(R.string.tab_artist),

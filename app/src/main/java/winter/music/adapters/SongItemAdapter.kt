@@ -8,9 +8,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.song_item.view.*
 import winter.music.R
+import winter.music.classes.Audio
 
 // adapter which populate list items
-class SongItemAdapter(private val songList: Array<String>?):RecyclerView.Adapter<SongItemAdapter.ListViewHolder>() {
+class SongItemAdapter(private val audioList: Array<Audio>):RecyclerView.Adapter<SongItemAdapter.ListViewHolder>() {
     class ListViewHolder(songItem: ConstraintLayout):RecyclerView.ViewHolder(songItem) {
         val songName: TextView = songItem.song_item_name
         val songAuthor: TextView = songItem.song_item_author
@@ -25,9 +26,10 @@ class SongItemAdapter(private val songList: Array<String>?):RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.songName.text = "Default Name"
-        holder.songAuthor.text = "Default Author"
+        val audio = audioList[position]
+        holder.songName.text = audio.name
+        holder.songAuthor.text = audio.artist
     }
 
-    override fun getItemCount() = songList!!.size
+    override fun getItemCount() = audioList.size
 }

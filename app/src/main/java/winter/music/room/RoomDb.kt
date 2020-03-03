@@ -4,7 +4,7 @@ import androidx.room.*
 
 @Entity(tableName = "song")
 data class Song(
-    @PrimaryKey(autoGenerate = true) val songId: Int,
+    @PrimaryKey(autoGenerate = true) val songId: Long,
     @ColumnInfo val name: String,
     @ColumnInfo(defaultValue = "Unknown") val author: String?,
     @ColumnInfo val duration: Int,
@@ -50,15 +50,27 @@ interface SongDao{ // used for accessing database
     @Query("SELECT * FROM song")
     fun getAll():List<Song>
 
+    @Query("SELECT COUNT(*) FROM song")
+    fun getCount(): Int
+
     @Query("SELECT * FROM song WHERE songId IN (:songIds)")
     fun loadAllById(songIds: IntArray):List<Song>
+
+    @Query("SELECT DISTINCT album FROM song")
+    fun getAlbums(): Array<String>
+
+    @Query("SELECT DISTINCT author FROM song")
+    fun getArtists(): Array<String>
+
+    @Query("SELECT DISTINCT location FROM song")
+    fun getFolders(): Array<String>
 
     @Transaction // return playlists to which the song belongs
     @Query("SELECT * FROM song WHERE songId = (:songId)")
     fun getListsInSong(songId: Int): SongWithPlaylists
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAll(songs: Array<Song>) {
+    fun insertAll(vararg songs: Song) {
     }
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -93,7 +105,7 @@ interface SongPlaylistCrossRefDao{
     fun insert(ref: SongPlaylistCrossRef)
 }
 
-@Database(entities = [Song::class, Playlist::class, SongPlaylistCrossRef::class], version = 2)
+@Database(entities = [Song::class, Playlist::class, SongPlaylistCrossRef::class], version = 1)
 abstract class MusicDatabase: RoomDatabase(){ // abstract class extends RoomDatabase
     abstract fun songDao(): SongDao // abstract method returns class @Dao
     abstract fun listDao(): PlaylistDao

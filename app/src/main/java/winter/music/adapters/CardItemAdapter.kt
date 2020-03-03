@@ -11,6 +11,7 @@ class CardItemAdapter(private val cardNames: Array<String>?): RecyclerView.Adapt
     class CardViewHolder(cardItem: ConstraintLayout): RecyclerView.ViewHolder(cardItem) {
         val cardImg = cardItem.card_img
         val cardBtn = cardItem.card_btn
+        val cardName = cardItem.card_name
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder{
@@ -21,6 +22,7 @@ class CardItemAdapter(private val cardNames: Array<String>?): RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
+        holder.cardName.text = cardNames!![position]
     }
 
     override fun getItemCount() = cardNames!!.size
