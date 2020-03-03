@@ -13,11 +13,8 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import winter.music.adapters.MainPagerAdapter
 import winter.music.R
-import winter.music.application.MusicApplication
-import winter.music.classes.Audio
 
 class MainActivity : AppCompatActivity(){
-    private lateinit var app: MusicApplication
     private lateinit var mainPagerAdapter: MainPagerAdapter // adapter controls which fragment to inflate in each page
     private lateinit var viewPager: ViewPager
     private lateinit var tabLayout: TabLayout
@@ -25,14 +22,8 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
-        app = application as MusicApplication
-        val single = app.getSingle()
-        val albums = app.getAlbums()
-        val artists = app.getArtists()
-        val folders = app.getFolders()
-
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-            ActivityCompat.requestPermissions(this, arrayOf<String>(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
 
         mainPagerAdapter = MainPagerAdapter(supportFragmentManager, arrayListOf(
                 getText(R.string.tab_category),
@@ -45,10 +36,6 @@ class MainActivity : AppCompatActivity(){
 
         val bottomClickLayout = findViewById<LinearLayout>(R.id.music_bottom_click)
         bottomClickLayout.setOnClickListener {
-        }
-
-        fun getSingle(): Array<Audio>{
-            return app.getSingle()
         }
     }
 }

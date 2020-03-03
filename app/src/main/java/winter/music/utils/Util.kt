@@ -59,7 +59,7 @@ class Util(){
             AsyncTask.execute {
                 val songCount = songDao.getCount()
                 songDao.insertAll(*songs)
-                Toast.makeText(context, "songs table initialized, $songCount songs added.", Toast.LENGTH_SHORT).show()
+                println("songs table initialized, $songCount songs added.")
             }
             db.close()
         }
@@ -74,6 +74,7 @@ class Util(){
             AsyncTask.execute {
                 albums = songDao.getAlbums()
             }
+            db.close()
             return albums
         }
 
@@ -86,6 +87,7 @@ class Util(){
             AsyncTask.execute {
                 artists = songDao.getArtists()
             }
+            db.close()
             return artists
         }
 
@@ -98,6 +100,7 @@ class Util(){
             AsyncTask.execute {
                 folders = songDao.getFolders()
             }
+            db.close()
             return folders
         }
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="play_cover_size">220dp</dimen>
-    <dimen name="play_backarrow_size">50dp</dimen>
+    <dimen name="play_backarrow_size">40dp</dimen>
     <dimen name="play_action_size">60dp</dimen>
     <dimen name="bottom_cover_size">50dp</dimen>
     <dimen name="bottom_pause_size">50dp</dimen>

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <androidx.viewpager.widget.ViewPager
@@ -20,7 +19,7 @@
             android:id="@+id/local_tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/colorPrimaryDark">
+            app:tabIndicatorColor="@color/c1">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tab_single"

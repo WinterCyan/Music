@@ -15,6 +15,8 @@ class MusicApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         single = Util.queryAll(this)
+        Util.initSongTable(this, single)
+
         artists = Util.queryArtists(this)
         albums = Util.queryAlbums(this)
         folders = Util.queryFolders(this)

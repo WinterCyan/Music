@@ -14,10 +14,13 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/play_backbutton"
             android:layout_width="@dimen/play_backarrow_size"
-            android:layout_height="@dimen/play_backarrow_size" />
+            android:layout_height="@dimen/play_backarrow_size"
+            android:background="?attr/selectableItemBackground"
+            android:scaleType="centerInside"
+            android:src="@drawable/back" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,11 +61,11 @@
             android:layout_width="@dimen/play_cover_size"
             android:layout_height="@dimen/play_cover_size"
             android:layout_marginTop="20dp"
-            android:contentDescription="@string/play_cover_description"
+            android:scaleType="centerInside"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_launcher" />
+            app:srcCompat="@drawable/disk" />
 
         <TextView
             android:id="@+id/play_lyric"
@@ -86,25 +89,37 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/play_side_guideline">
 
-            <Button
+            <ImageButton
                 android:id="@+id/play_timer"
                 android:layout_width="@dimen/play_action_size"
-                android:layout_height="@dimen/play_action_size" />
+                android:layout_height="@dimen/play_action_size"
+                android:background="?attr/selectableItemBackground"
+                android:scaleType="centerInside"
+                android:src="@drawable/clock" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/play_shuffle"
                 android:layout_width="@dimen/play_action_size"
-                android:layout_height="@dimen/play_action_size" />
+                android:layout_height="@dimen/play_action_size"
+                android:background="?attr/selectableItemBackground"
+                android:scaleType="centerInside"
+                android:src="@drawable/shuffle" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/play_list"
                 android:layout_width="@dimen/play_action_size"
-                android:layout_height="@dimen/play_action_size" />
+                android:layout_height="@dimen/play_action_size"
+                android:background="?attr/selectableItemBackground"
+                android:scaleType="centerInside"
+                android:src="@drawable/list" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/play_tag"
                 android:layout_width="@dimen/play_action_size"
-                android:layout_height="@dimen/play_action_size" />
+                android:layout_height="@dimen/play_action_size"
+                android:background="?attr/selectableItemBackground"
+                android:scaleType="centerInside"
+                android:src="@drawable/tag" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
