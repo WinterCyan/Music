@@ -1,26 +1,21 @@
 package winter.music.utils
 
 import android.content.Context
-import android.os.AsyncTask
 import android.provider.MediaStore
-import android.widget.Toast
-import androidx.room.Room
-import winter.music.classes.Audio
-import winter.music.room.MusicDatabase
-import winter.music.room.Song
+import winter.music.data.Audio
+import winter.music.data.MusicDatabase
 
 class Util(){
     companion object{
         // get all audio files from MediaStore
-        fun queryAll(context: Context): Array<Audio>{
-            var audioList = arrayOf<Audio>()
+        fun queryAll(context: Context): List<Audio>{
+            var audioList = listOf<Audio>()
             val projection = arrayOf(
                 MediaStore.Audio.Media._ID, // id
                 MediaStore.Audio.Media.DISPLAY_NAME, // name
                 MediaStore.Audio.Media.ARTIST, // artist
                 MediaStore.Audio.Media.ALBUM, // album
-                MediaStore.Audio.Media.DURATION, // duration
-                MediaStore.Audio.Media.RELATIVE_PATH // location
+                MediaStore.Audio.Media.DURATION // duration
             )
             val query = context.contentResolver.
                 query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, projection, null, null, null)
@@ -32,75 +27,69 @@ class Util(){
                 val albumColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM)
                 val durationColumn =
                     cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION)
-                val locationColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.RELATIVE_PATH)
 
                 while (cursor.moveToNext()) {
                     val id = cursor.getLong(idColumn)
                     val name = cursor.getString(nameColumn)
-                    val duration = cursor.getInt(durationColumn)
-                    val album = cursor.getString(albumColumn)
-                    val location = cursor.getString(locationColumn)
                     val artist = cursor.getString(artistColumn)
-                    audioList += Audio(id, name, artist, album, duration, location, null)
+                    val album = cursor.getString(albumColumn)
+                    val duration = cursor.getInt(durationColumn)
+                    audioList += Audio(id, name, artist, album, duration)
                 }
             }
             return audioList
         }
 
         // initialize songs table
-        fun initSongTable(context: Context, audios: Array<Audio>){
-            val db = Room.databaseBuilder(context, MusicDatabase::class.java, "music.db")
-                .fallbackToDestructiveMigration()
-                .build()
-            val songDao = db.songDao()
-            var songs = arrayOf<Song>()
-            for (audio in audios)
-                songs += Song(audio.id, audio.name, audio.artist, audio.duration, audio.location, audio.album, null)
-            AsyncTask.execute {
-                val songCount = songDao.getCount()
-                songDao.insertAll(*songs)
-                println("songs table initialized, $songCount songs added.")
-            }
-            db.close()
+        suspend fun initSongTable(context: Context, audios: List<Audio>){
+            MusicDatabase.getInstance(context)
+                .audioDao()
+                .insertAll(audios)
+            val songCount = MusicDatabase.getInstance(context)
+                .audioDao()
+                .getCount()
+            println("songs table initialized, $songCount songs added.")
+        }
+
+        // query names
+        fun queryNames(context: Context): Array<String> {
+            var names: Array<String> = arrayOf()
+//            AsyncTask.execute {
+//            }
+            names = MusicDatabase.getInstance(context)!!
+                .songDao()
+                .getNames()
+            return names
         }
 
         // query album
         fun queryAlbums(context: Context): Array<String> {
-            val db = Room.databaseBuilder(context, MusicDatabase::class.java, "music.db")
-                .fallbackToDestructiveMigration()
-                .build()
-            val songDao = db.songDao()
             var albums: Array<String> = arrayOf()
-            AsyncTask.execute {
-                albums = songDao.getAlbums()
-            }
-            db.close()
+//            AsyncTask.execute {
+//            }
+            albums = MusicDatabase.getInstance(context)!!
+                .songDao()
+                .getArtists()
             return albums
         }
 
         fun queryArtists(context: Context): Array<String> {
-            val db = Room.databaseBuilder(context, MusicDatabase::class.java, "music.db")
-                .fallbackToDestructiveMigration()
-                .build()
-            val songDao = db.songDao()
             var artists: Array<String> = arrayOf()
-            AsyncTask.execute {
-                artists = songDao.getArtists()
-            }
-            db.close()
+//            AsyncTask.execute {
+//            }
+            artists = MusicDatabase.getInstance(context)!!
+                .songDao()
+                .getArtists()
             return artists
         }
 
         fun queryFolders(context: Context): Array<String> {
-            val db = Room.databaseBuilder(context, MusicDatabase::class.java, "music.db")
-                .fallbackToDestructiveMigration()
-                .build()
-            val songDao = db.songDao()
             var folders: Array<String> = arrayOf()
-            AsyncTask.execute {
-                folders = songDao.getFolders()
-            }
-            db.close()
+//            AsyncTask.execute {
+//            }
+            folders = MusicDatabase.getInstance(context)!!
+                .songDao()
+                .getArtists()
             return folders
         }
     }

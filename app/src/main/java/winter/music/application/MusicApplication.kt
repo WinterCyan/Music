@@ -1,7 +1,7 @@
 package winter.music.application
 
 import android.app.Application
-import android.content.Context
+import android.util.Log
 import winter.music.classes.Audio
 import winter.music.utils.Util
 
@@ -17,6 +17,7 @@ class MusicApplication : Application() {
         single = Util.queryAll(this)
         Util.initSongTable(this, single)
 
+        val names = Util.queryNames(this)
         artists = Util.queryArtists(this)
         albums = Util.queryAlbums(this)
         folders = Util.queryFolders(this)

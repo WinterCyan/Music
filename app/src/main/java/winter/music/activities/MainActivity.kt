@@ -3,6 +3,7 @@ package winter.music.activities
 import android.Manifest
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.LinearLayout
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity(){
 
         val bottomClickLayout = findViewById<LinearLayout>(R.id.music_bottom_click)
         bottomClickLayout.setOnClickListener {
+            val intent = Intent(this, PlayActivity::class.java)
+            startActivity(intent)
         }
     }
 }
