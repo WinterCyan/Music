@@ -6,12 +6,14 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/song_item_click_area"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="5dp"
+        android:clickable="true"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +42,8 @@
         android:layout_height="@dimen/song_operate_size"
         android:layout_marginEnd="10dp"
         android:background="?attr/selectableItemBackground"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
         android:scaleType="centerInside"
         android:src="@drawable/select"
         app:layout_constraintBottom_toBottomOf="parent"

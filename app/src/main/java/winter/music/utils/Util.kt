@@ -41,56 +41,30 @@ class Util(){
         }
 
         // initialize songs table
-        suspend fun initSongTable(context: Context, audios: List<Audio>){
+        fun initSongTable(context: Context, audios: List<Audio>){
             MusicDatabase.getInstance(context)
                 .audioDao()
                 .insertAll(audios)
-            val songCount = MusicDatabase.getInstance(context)
+            val inaudios = MusicDatabase.getInstance(context)
                 .audioDao()
-                .getCount()
-            println("songs table initialized, $songCount songs added.")
+                .getAudioByAlbum("Bright eyes")
+            for (audio in inaudios) println("name: ${audio.name}")
         }
 
-        // query names
-        fun queryNames(context: Context): Array<String> {
-            var names: Array<String> = arrayOf()
-//            AsyncTask.execute {
-//            }
-            names = MusicDatabase.getInstance(context)!!
-                .songDao()
-                .getNames()
-            return names
-        }
-
-        // query album
-        fun queryAlbums(context: Context): Array<String> {
-            var albums: Array<String> = arrayOf()
-//            AsyncTask.execute {
-//            }
-            albums = MusicDatabase.getInstance(context)!!
-                .songDao()
-                .getArtists()
-            return albums
-        }
-
-        fun queryArtists(context: Context): Array<String> {
-            var artists: Array<String> = arrayOf()
-//            AsyncTask.execute {
-//            }
-            artists = MusicDatabase.getInstance(context)!!
-                .songDao()
+        fun queryArtists(context: Context): List<String> {
+            var artists: List<String> = listOf()
+            artists = MusicDatabase.getInstance(context)
+                .audioDao()
                 .getArtists()
             return artists
         }
 
-        fun queryFolders(context: Context): Array<String> {
-            var folders: Array<String> = arrayOf()
-//            AsyncTask.execute {
-//            }
-            folders = MusicDatabase.getInstance(context)!!
-                .songDao()
-                .getArtists()
-            return folders
+        fun queryAlbums(context: Context): List<String> {
+            var albums: List<String> = listOf()
+            albums = MusicDatabase.getInstance(context)
+                .audioDao()
+                .getAlbums()
+            return albums
         }
     }
 }

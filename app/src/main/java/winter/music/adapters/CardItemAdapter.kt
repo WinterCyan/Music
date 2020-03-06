@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.card_item.view.*
 import winter.music.R
 
-class CardItemAdapter(private val cardNames: Array<String>?): RecyclerView.Adapter<CardItemAdapter.CardViewHolder>() {
+class CardItemAdapter(private val cardNames: List<String>?): RecyclerView.Adapter<CardItemAdapter.CardViewHolder>() {
     class CardViewHolder(cardItem: ConstraintLayout): RecyclerView.ViewHolder(cardItem) {
         val cardImg = cardItem.card_img
         val cardBtn = cardItem.card_btn

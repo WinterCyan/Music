@@ -5,7 +5,7 @@
     <dimen name="play_action_size">60dp</dimen>
     <dimen name="bottom_cover_size">50dp</dimen>
     <dimen name="bottom_pause_size">50dp</dimen>
-    <dimen name="song_operate_size">30dp</dimen>
+    <dimen name="song_operate_size">50dp</dimen>
     <dimen name="cate_play_button">100dp</dimen>
     <dimen name="cate_card_size">120dp</dimen>
 </resources>

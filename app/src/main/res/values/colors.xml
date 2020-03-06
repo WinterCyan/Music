@@ -4,9 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="c1">#2ab3c4</color>
-    <color name="c2">#55939c</color>
-    <color name="c3">#f9c37f</color>
-    <color name="c4">#fb915a</color>
-    <color name="c5">#c4b6ad</color>
+    <color name="c1">#80997d</color>
+    <color name="c2">#a49f7a</color>
+    <color name="c3">#bf9970</color>
+    <color name="c4">#ca8863</color>
+    <color name="c5">#a75749</color>
 </resources>

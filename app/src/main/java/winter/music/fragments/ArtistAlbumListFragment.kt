@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import winter.music.R
-import winter.music.adapters.SongItemAdapter
-import winter.music.data.Audio
+import winter.music.adapters.ArtistAlbumItemAdapter
 
-class SongListFragment(private val audioList: List<Audio>): Fragment(){
+class ArtistAlbumListFragment(private val artistAlbumList: List<String>): Fragment(){
     private lateinit var recyclerView: RecyclerView
     private lateinit var manager: RecyclerView.LayoutManager
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
@@ -20,10 +20,10 @@ class SongListFragment(private val audioList: List<Audio>): Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.song_list, container, false)
-        viewAdapter = SongItemAdapter(audioList)
+        val view = inflater.inflate(R.layout.artist_album_list, container, false)
+        viewAdapter = ArtistAlbumItemAdapter(artistAlbumList)
         manager = LinearLayoutManager(context)
-        recyclerView = view.findViewById<RecyclerView>(R.id.song_list_recycler).apply {
+        recyclerView = view.findViewById<RecyclerView>(R.id.artist_album_list_recycler).apply {
             adapter = viewAdapter
             layoutManager = manager
         }

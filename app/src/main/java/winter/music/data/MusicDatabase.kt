@@ -22,7 +22,9 @@ abstract class MusicDatabase: RoomDatabase(){
         }
 
         private fun buildDatabase(context: Context): MusicDatabase {
-            return Room.databaseBuilder(context, MusicDatabase::class.java, DATABASE_NAME).build()
+            return Room.databaseBuilder(context, MusicDatabase::class.java, DATABASE_NAME)
+                .allowMainThreadQueries()
+                .build()
         }
     }
 }

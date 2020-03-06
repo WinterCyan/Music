@@ -27,8 +27,7 @@ class LocalFragment : Fragment(){
             arrayListOf(
                 getText(R.string.tab_artist),
                 getText(R.string.tab_album),
-                getText(R.string.tab_single),
-                getText(R.string.tab_folder)
+                getText(R.string.tab_single)
             )
         )
         localViewPager = localView.findViewById(R.id.local_view_pager)

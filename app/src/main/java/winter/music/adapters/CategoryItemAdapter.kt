@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.card_row.view.*
 import winter.music.R
 
 // adapter which populate list items
-class CategoryItemAdapter(private val categories: Array<String>?):RecyclerView.Adapter<CategoryItemAdapter.CategoryViewHolder>() {
+class CategoryItemAdapter(private val categories: List<String>?):RecyclerView.Adapter<CategoryItemAdapter.CategoryViewHolder>() {
     class CategoryViewHolder(cardRow: ConstraintLayout):RecyclerView.ViewHolder(cardRow) {
         val categoryName = cardRow.category_name
         val cardRowRecyclerView = cardRow.card_row_recycler

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgblur">
+    android:background="@drawable/gbgb2">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -30,7 +30,7 @@
             android:id="@+id/music_tablayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/c1">
+            app:tabIndicatorColor="@color/c5">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tab_category"

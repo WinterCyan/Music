@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import winter.music.R
 import winter.music.adapters.CardItemAdapter
 
-class CardListFragment(val cardNames: Array<String>?): Fragment(){
+class CardListFragment(val cardNames: List<String>?): Fragment(){
     lateinit var recyclerView: RecyclerView
     lateinit var manager: RecyclerView.LayoutManager
     lateinit var viewAdapter: RecyclerView.Adapter<*>

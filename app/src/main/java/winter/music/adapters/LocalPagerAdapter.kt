@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import winter.music.activities.MainActivity
 import winter.music.application.MusicApplication
+import winter.music.fragments.ArtistAlbumListFragment
 import winter.music.fragments.CardListFragment
 import winter.music.fragments.SongListFragment
 
@@ -14,15 +15,14 @@ class LocalPagerAdapter(context: Context, fm: FragmentManager, private val tabsN
     private val single = app.getSingle()
     private val albums = app.getAlbums()
     private val artists = app.getArtists()
-    private val folders = app.getFolders()
-    override fun getCount(): Int = 4
+    override fun getCount(): Int = 3
 
     override fun getItem(position: Int): Fragment {
         return when(position) {
-            0 -> CardListFragment(artists)
-            1 -> CardListFragment(albums)
+            0 -> ArtistAlbumListFragment(artists)
+            1 -> ArtistAlbumListFragment(albums)
             2 -> SongListFragment(single)
-            else -> CardListFragment(folders)
+            else -> SongListFragment(single)
         }
     }
 

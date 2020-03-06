@@ -9,7 +9,7 @@ import java.util.*
 @Dao
 interface PlaylistDao{
     @Query("SELECT * FROM playlists WHERE id = :playlistId")
-    fun getPlaylist(playlistId: Long): LiveData<Playlist>
+    fun getPlaylist(playlistId: Long): Playlist
 
     @Insert
     fun insert(playlist: Playlist): Long
